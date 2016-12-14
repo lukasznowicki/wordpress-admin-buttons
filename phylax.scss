@@ -1,0 +1,167 @@
+$font-stack: 'Open Sans',sans-serif;
+$font-size: 16px;
+
+$button-font-size: 14px;
+$button-border-radius: 6px;
+$button-margin: 0;
+$button-padding: 0 10px 1px;
+
+.button{
+	display:inline-block;
+	text-decoration:none;
+	font-size:$button-font-size;
+	line-height:$button-font-size*2;
+	height:$button-font-size*2+2;
+	cursor:pointer;
+	-webkit-appearance:none;
+	-webkit-border-radius:$button-border-radius;
+	border-radius:$button-border-radius;
+	white-space:nowrap;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	border-style:solid;
+	border-width:1px;
+	margin:$button-margin;
+	padding:$button-padding;
+	vertical-align:baseline;
+}
+
+@mixin color-button( $name, $text_color, $base_hue, $base_saturation, $base_light ) {
+	@if ( $base_hue < 3 ) {
+		$base_hue: 3;
+	}
+	@if ( $base_hue > 356 ) {
+		$base_hue: 356;
+	}
+	@if ( $base_saturation < 30% ) {
+		$base_saturation: 30%;
+	}
+	@if ( $base_saturation > 100% ) {
+		$base_saturation: 100%;
+	}
+	@if ( $base_light < 6% ) {
+		$base_light: 6%;
+	}
+	@if ( $base_light > 71% ) {
+		$base_light: 71%;
+	}
+	.button-#{$name} {
+		background:hsla( $base_hue, $base_saturation, $base_light, 1 );
+		-webkit-box-shadow:0 1px 0 hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+		box-shadow:0 1px 0 hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+		color:$text_color;
+		text-shadow:0 -1px 1px hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 ),1px 0 1px hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 ),0 1px 1px hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 ),-1px 0 1px hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+		border-color:hsla( $base_hue + 2, $base_saturation, $base_light - 3, 1 ) hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 ) hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+	}
+	.button-#{$name}.focus,
+	.button-#{$name}.hover,
+	.button-#{$name}:focus,
+	.button-#{$name}:hover {
+		background: hsla( $base_hue - 1, $base_saturation, $base_light + 4, 1 );
+		color:$text_color;
+		border-color:hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+	}
+	.button-#{$name}.focus,
+	.button-#{$name}:focus {
+		-webkit-box-shadow:0 1px 0 hsla( $base_hue + 2, $base_saturation, $base_light - 3, 1 ),0 0 2px 1px hsla( $base_hue - 3, $base_saturation - 30%, $base_light + 17%, 1 );
+		box-shadow:0 1px 0 hsla( $base_hue + 2, $base_saturation, $base_light - 3, 1 ),0 0 2px 1px hsla( $base_hue - 3, $base_saturation - 30%, $base_light + 17%, 1 );
+	}
+	.button-#{$name}.active,
+	.button-#{$name}.active:focus,
+	.button-#{$name}.active:hover,
+	.button-#{$name}:active {
+		background:hsla( $base_hue + 2, $base_saturation, $base_light - 3, 1 );
+		-webkit-box-shadow:inset 0 2px 0 hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+		box-shadow:inset 0 2px 0 hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+		vertical-align:top;
+		border-color:hsla( $base_hue + 3, $base_saturation, $base_light - 6, 1 );
+	}
+	.button-#{$name}-disabled,
+	.button-#{$name}.disabled,
+	.button-#{$name}:disabled,
+	.button-#{$name}[disabled] {
+		color:hsla( $base_hue - 3, $base_saturation - 30, $base_light + 29, 1)!important;
+		background:hsla( $base_hue - 1, $base_saturation, $base_light + 2, 1 )!important;
+		-webkit-box-shadow:none!important;
+		box-shadow:none!important;
+		text-shadow:0 -1px 0 rgba(0,0,0,.1)!important;
+		cursor:default;
+		border-color:hsla( $base_hue + 1, $base_saturation, $base_light - 1, 1 )!important;
+	}
+}
+
+@include color-button( 'primary', #fff, 197, 100%, 36% );
+
+@include color-button( 'aqua-cyan', #fff, 180, 100%, 50% );
+@include color-button( 'blue', #fff, 240, 100%, 50% );
+@include color-button( 'blueviolet', #fff, 271, 76%, 53% );
+@include color-button( 'burlywood', #fff, 34, 57%, 70% );
+@include color-button( 'chartreuse', #fff, 90, 100%, 50% );
+@include color-button( 'chocolate', #fff, 25, 75%, 47% );
+@include color-button( 'coral', #fff, 16, 100%, 66% );
+@include color-button( 'cornflowerblue', #fff, 219, 79%, 66% );
+@include color-button( 'crimson', #fff, 348, 83%, 58% );
+@include color-button( 'cyan-aqua', #fff, 180, 100%, 50% );
+@include color-button( 'darkblue', #fff, 240, 100%, 27% );
+@include color-button( 'darkcyan', #fff, 180, 100%, 27% );
+@include color-button( 'darkgoldenrod', #fff, 43, 89%, 38% );
+@include color-button( 'darkgreen', #fff, 120, 100%, 20% );
+@include color-button( 'darkkhaki', #fff, 56, 38%, 58% );
+@include color-button( 'darkmagenta', #fff, 300, 100%, 27% );
+@include color-button( 'darkolivegreen', #fff, 82, 39%, 30% );
+@include color-button( 'darkorange', #fff, 33, 100%, 50% );
+@include color-button( 'darkorchid', #fff, 280, 61%, 50% );
+@include color-button( 'darksalmon', #fff, 15, 72%, 70% );
+@include color-button( 'darkslateblue', #fff, 248, 39%, 39% );
+@include color-button( 'darkturquoise', #fff, 181, 100%, 41% );
+@include color-button( 'darkviolet', #fff, 282, 100%, 41% );
+@include color-button( 'deeppink', #fff, 328, 100%, 54% );
+@include color-button( 'deepskyblue', #fff, 195, 100%, 50% );
+@include color-button( 'dodgerblue', #fff, 210, 100%, 56% );
+@include color-button( 'forestgreen', #fff, 120, 61%, 34% );
+@include color-button( 'fuchsia-magenta', #fff, 300, 100%, 50% );
+@include color-button( 'gold', #fff, 51, 100%, 50% );
+@include color-button( 'goldenrod', #fff, 43, 74%, 49% );
+@include color-button( 'green', #fff, 120, 100%, 25% );
+@include color-button( 'greenyellow', #fff, 84, 100%, 59% );
+@include color-button( 'hotpink', #fff, 330, 100%, 71% );
+@include color-button( 'indigo', #fff, 275, 100%, 25% );
+@include color-button( 'lawngreen', #fff, 90, 100%, 49% );
+@include color-button( 'lightseagreen', #fff, 177, 70%, 41% );
+@include color-button( 'lime', #fff, 120, 100%, 50% );
+@include color-button( 'limegreen', #fff, 120, 61%, 50% );
+@include color-button( 'mediumaquamarine', #fff, 160, 51%, 60% );
+@include color-button( 'mediumblue', #fff, 240, 100%, 40% );
+@include color-button( 'mediumorchid', #fff, 288, 59%, 58% );
+@include color-button( 'mediumpurple', #fff, 260, 60%, 65% );
+@include color-button( 'mediumseagreen', #fff, 147, 50%, 47% );
+@include color-button( 'mediumslateblue', #fff, 249, 80%, 67% );
+@include color-button( 'mediumspringgreen', #fff, 157, 100%, 49% );
+@include color-button( 'mediumturquoise', #fff, 178, 60%, 55% );
+@include color-button( 'mediumvioletred', #fff, 322, 81%, 43% );
+@include color-button( 'midnightblue', #fff, 240, 64%, 27% );
+@include color-button( 'navy', #fff, 240, 100%, 25% );
+@include color-button( 'olive', #fff, 60, 100%, 25% );
+@include color-button( 'olivedrab', #fff, 80, 60%, 35% );
+@include color-button( 'orange', #fff, 39, 100%, 50% );
+@include color-button( 'orangered', #fff, 16, 100%, 50% );
+@include color-button( 'orchid', #fff, 302, 59%, 65% );
+@include color-button( 'palevioletred', #fff, 340, 60%, 65% );
+@include color-button( 'peru', #fff, 30, 59%, 53% );
+@include color-button( 'purple', #fff, 300, 100%, 25% );
+@include color-button( 'royalblue', #fff, 225, 73%, 57% );
+@include color-button( 'saddlebrown', #fff, 25, 76%, 31% );
+@include color-button( 'salmon', #fff, 6, 93%, 71% );
+@include color-button( 'sandybrown', #fff, 28, 87%, 67% );
+@include color-button( 'seagreen', #fff, 146, 50%, 36% );
+@include color-button( 'sienna', #fff, 19, 56%, 40% );
+@include color-button( 'slateblue', #fff, 248, 53%, 58% );
+@include color-button( 'springgreen', #fff, 150, 100%, 50% );
+@include color-button( 'steelblue', #fff, 207, 44%, 49% );
+@include color-button( 'tan', #fff, 34, 44%, 69% );
+@include color-button( 'teal', #fff, 180, 100%, 25% );
+@include color-button( 'tomato', #fff, 9, 100%, 64% );
+@include color-button( 'turquoise', #fff, 174, 72%, 56% );
+@include color-button( 'yellow', #fff, 60, 100%, 50% );
+@include color-button( 'yellowgreen', #fff, 80, 61%, 50% );
